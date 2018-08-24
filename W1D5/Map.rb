@@ -29,11 +29,14 @@ class Map
   end
 
   def delete(key)
+    value = get(key)
+    @array.reject! { |key_pair| key_pair[0] == key }
 
+    value
   end
 
   def show
-
+    @arr
   end
 
 
