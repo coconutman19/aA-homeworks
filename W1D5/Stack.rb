@@ -4,7 +4,7 @@ class Stack
   end
 
   def push(el)
-    # adds an element to the stack
+    @array.push(el)
   end
 
   def pop
