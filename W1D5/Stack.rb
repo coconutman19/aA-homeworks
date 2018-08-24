@@ -9,7 +9,7 @@ class Stack
   end
 
   def pop
-    # removes one element from the stack
+    @array.pop
   end
 
   def peek
