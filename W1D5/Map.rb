@@ -19,7 +19,13 @@ class Map
   end
 
   def get(key)
+    @arr.each do |key_pair|
+      if key_pair[0] == key
+        return key_pair[-1]
+      end
+    end
 
+    nil
   end
 
   def delete(key)
