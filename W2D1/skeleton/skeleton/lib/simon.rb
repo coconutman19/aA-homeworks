@@ -14,7 +14,8 @@ class Simon
   end
 
   def take_turn
-
+    self.show_sequence
+    self.require_sequence
   end
 
   def show_sequence
