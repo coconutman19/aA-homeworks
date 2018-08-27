@@ -10,6 +10,13 @@ class Simon
   end
 
   def play
+    until self.game_over == true
+      self.take_turn
+    end
+    
+    self.game_over_message
+    self.reset_game
+
 
   end
 
