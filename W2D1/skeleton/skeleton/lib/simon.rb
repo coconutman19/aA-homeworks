@@ -26,7 +26,8 @@ class Simon
   end
 
   def add_random_color
-
+    colors = %w(red blue yellow green)
+    seq << colors.sample
   end
 
   def round_success_message
