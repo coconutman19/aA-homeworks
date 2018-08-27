@@ -16,6 +16,8 @@ class Simon
   def take_turn
     self.show_sequence
     self.require_sequence
+    self.round_success_message
+    self.sequence_length += 1
   end
 
   def show_sequence
@@ -32,6 +34,7 @@ class Simon
   end
 
   def round_success_message
+
 
   end
 
