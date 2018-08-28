@@ -1,7 +1,7 @@
 require 'byebug'
 
 class Board
-  attr_accessor :cups
+  attr_accessor :cups, :current_player_name
 
   def initialize(name1, name2)
     @player1 = name1
@@ -38,19 +38,29 @@ class Board
       starting_idx += 1
       starting_idx = starting_idx % 14
       if starting_idx == 6
-        @cups[6] << num_of_stones.shift if current_player_name == @name1
+        @cups[6] << num_of_stones.shift if current_player_name == @player1
       elsif starting_idx == 13
-        @cups[13] << num_of_stones.shift if current_player_name == @name2
+        @cups[13] << num_of_stones.shift if current_player_name == @player2
       else
         @cups[starting_idx] << num_of_stones.shift
       end
 
     end
-
+    render
+    next_turn(starting_idx)
+    # if next_turn(starting_idx) != 1
+    #   make_move(starting_idx, current_player_name)
+    # end
   end
 
   def next_turn(ending_cup_idx)
-    # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+    if ending_cup_idx == 6 || ending_cup_idx == 13
+      :prompt
+    elsif @cups[ending_cup_idx].count == 1
+      :switch
+    else
+      ending_cup_idx
+    end
   end
 
   def render
@@ -62,8 +72,20 @@ class Board
   end
 
   def one_side_empty?
+    if @cups[0..5].all? { |cup| cup.empty? } || @cups[7..12].all? { |cup| cup.empty? }
+      true
+    else
+      false
+    end
   end
 
   def winner
+    if @cups[6].count == @cups[13].count
+      :draw
+    elsif @cups[6].count > @cups[13].count
+      @player1
+    else
+      @player2
+    end
   end
 end
