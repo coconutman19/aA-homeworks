@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Board
   attr_accessor :cups
 
@@ -26,6 +28,25 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    # debugger
+    num_of_stones = @cups[start_pos].dup
+    starting_idx = start_pos
+    @cups[start_pos] = []
+
+    until num_of_stones.empty?
+
+      starting_idx += 1
+      starting_idx = starting_idx % 14
+      if starting_idx == 6
+        @cups[6] << num_of_stones.shift if current_player_name == @name1
+      elsif starting_idx == 13
+        @cups[13] << num_of_stones.shift if current_player_name == @name2
+      else
+        @cups[starting_idx] << num_of_stones.shift
+      end
+
+    end
+
   end
 
   def next_turn(ending_cup_idx)
