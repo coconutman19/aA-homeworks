@@ -1,10 +1,9 @@
-const initialState = {
-  city: "Please Select", 
-  jobs: []
-};
+const initialState = (state = initialState, action) {
+  switch(action.type) {
+    case "SWITCH_LOCATION"
+      default:
+        return state;
+    }
+  };
 
-const reducer = (state = initialState, action) => {
-  return state; // remove this and fill out the body of the reducer function
-};
-
-export default reducer;
+  export default reducer;
