@@ -1,0 +1,22 @@
+body {
+  background-image: url("splash.jpg");
+
+}
+
+nav {
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+}
+
+ul > li {
+  display: relative;
+  padding-left: 5px;
+  list-style-type: none;
+}
+
+footer {
+
+}
